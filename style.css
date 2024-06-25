@@ -1,4 +1,128 @@
-.card {
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+
+:root {
+    --bg-color: #fbf8e9;
+    --red: #e6b8b8;
+    --red-hover: #cfa3a3;
+    --red-active: #b58f8f;
+    --green: #b8e6cb;
+    --green-hover: #a1cfb4;
+    --green-active: #87ab96;
+    --blue: #e9f3fb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%;
+    font-family: "Nanum Gothic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    padding: 1rem;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+button {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.4rem;
     border: 1px solid black;
+    border-radius: 0rem;
+    /* border-radius: 0.5rem; */
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.top > h1 {
+    font-family: "Nanum Myeongjo", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.top > #new-book-btn {
+    background-color: var(--green);
+}
+
+.top > #new-book-btn:hover {
+    background-color: var(--green-hover);
+}
+
+.top > #new-book-btn:active {
+    background-color: var(--green-active);
+}
+
+#card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    grid-auto-rows: 12rem;
+    gap: 1rem;
+}
+
+.card {
+    padding: 1rem;
+    background-color: var(--blue);
+    border: 1px solid black;
+    border-radius: 0rem;
+    /* border-radius: 1rem; */
+    display: grid;
+    gap: 0.2rem;
+    grid-template-rows: auto auto auto 1fr auto;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+        "card-book-title card-book-title"
+        "card-book-author card-book-author"
+        "card-book-pages card-book-pages"
+        "card-book-read card-book-read"
+        "delete-btn read-toggle-label";
+}
+
+.card > .card-book-title {
+    font-weight: 700;
+    grid-area: card-book-title;
+}
+
+.card > .card-book-author {
+    grid-area: card-book-author;
+}
+
+.card > .card-book-pages {
+    grid-area: card-book-pages;
+}
+
+.card > .card-book-read {
+    grid-area: card-book-read;
+}
+
+.card > .delete-btn {
+    background-color: var(--red);
+    grid-area: delete-btn;
+    justify-self: start;
+}
+
+.card > .delete-btn:hover {
+    background-color: var(--red-hover);
+}
+
+.card > .delete-btn:active {
+    background-color: var(--red-active);
+}
+
+.card > .read-toggle-label {
+    grid-area: read-toggle-label;
 }
 

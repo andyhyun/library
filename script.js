@@ -14,23 +14,44 @@ Book.prototype.info = function() {
            `${(this.read) ? "completed": "not read yet"}`;
 };
 
+Book.prototype.readString = function() {
+    return (this.read) ? "Completed" : "Not Read Yet";
+};
+
 function addBookToLibrary(book) {
+    const addIndex = myLibrary.length;
     myLibrary.push(book);
 
-    const container = document.getElementById("cardContainer");
+    const container = document.getElementById("card-container");
 
     const card = document.createElement("div");
     card.classList.add("card");
-    const addIndex = myLibrary.length - 1;
     card.dataset.index = `${addIndex}`;
-    const cardDescription = document.createElement("div");
-    cardDescription.classList.add("description");
-    cardDescription.textContent = book.info();
-    card.appendChild(cardDescription);
+
+    const cardBookTitle = document.createElement("h3");
+    cardBookTitle.classList.add("card-book-title");
+    cardBookTitle.textContent = book.title;
+    card.appendChild(cardBookTitle);
+
+    const cardBookAuthor = document.createElement("p");
+    cardBookAuthor.classList.add("card-book-author");
+    cardBookAuthor.textContent = book.author;
+    card.appendChild(cardBookAuthor);
+
+    const cardBookPages = document.createElement("p");
+    cardBookPages.classList.add("card-book-pages");
+    cardBookPages.textContent = `${book.pages} pages`;
+    card.appendChild(cardBookPages);
+
+    const cardBookRead = document.createElement("p");
+    cardBookRead.classList.add("card-book-read");
+    cardBookRead.textContent = book.readString();
+    card.appendChild(cardBookRead);
 
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
-    deleteButton.textContent = "delete";
+    deleteButton.classList.add("delete-btn");
+    deleteButton.textContent = "Delete";
     deleteButton.addEventListener("click", () => {
         myLibrary.splice(addIndex, 1);
         const cards = container.children;
@@ -46,12 +67,13 @@ function addBookToLibrary(book) {
     card.appendChild(deleteButton);
 
     const readToggleLabel = document.createElement("label");
+    readToggleLabel.classList.add("read-toggle-label");
     const readToggle = document.createElement("input");
     readToggle.type = "checkbox";
     readToggle.checked = book.read;
     readToggleLabel.appendChild(readToggle);
     const readToggleSpan = document.createElement("span");
-    readToggleSpan.textContent = "read";
+    readToggleSpan.textContent = "Read";
     readToggleLabel.appendChild(readToggleSpan);
     readToggle.addEventListener("change", () => {
         if (readToggle.checked) {
@@ -59,7 +81,7 @@ function addBookToLibrary(book) {
         } else {
             book.read = false;
         }
-        cardDescription.textContent = book.info();
+        cardBookRead.textContent = book.readString();
     });
     card.appendChild(readToggleLabel);
 
@@ -68,7 +90,7 @@ function addBookToLibrary(book) {
 
 // TODO: use when loading library from some storage
 function resetContainer() {
-    const container = document.getElementById("cardContainer");
+    const container = document.getElementById("card-container");
 
     while (container.firstChild) {
         container.removeChild(container.lastChild);
@@ -81,22 +103,18 @@ function resetContainer() {
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 addBookToLibrary(theHobbit);
-const ph = new Book("ph", "ph", 123, true);
-addBookToLibrary(ph);
-const ph2 = new Book("ph2", "ph2", 123, false);
-addBookToLibrary(ph2);
-const ph3 = new Book("ph3", "ph3", 123, false);
-addBookToLibrary(ph3);
-const ph4 = new Book("ph4", "ph4", 123, true);
-addBookToLibrary(ph4);
-const ph5 = new Book("ph5", "ph5", 123, true);
-addBookToLibrary(ph5);
+const latheOfHeaven = new Book("The Lathe of Heaven", "Ursula K. Le Guin", 184, true);
+addBookToLibrary(latheOfHeaven);
+const placeholderBook = new Book("Placeholder", "Author", 123, true);
+addBookToLibrary(placeholderBook);
+const placeholderBook2 = new Book("Placeholder", "Author", 123, true);
+addBookToLibrary(placeholderBook2);
 
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("form");
-const newBookButton = document.getElementById("newBookBtn");
-const cancelButton = document.getElementById("cancelBtn");
-const addBookButton = document.getElementById("addBookBtn");
+const newBookButton = document.getElementById("new-book-btn");
+const cancelButton = document.getElementById("cancel-btn");
+const addBookButton = document.getElementById("add-book-btn");
 
 newBookButton.addEventListener("click", () => {
     dialog.showModal()

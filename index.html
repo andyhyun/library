@@ -3,35 +3,37 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Library</title>
+        <title>Library.</title>
         <link rel="stylesheet" href="./style.css">
         <script src="./script.js" defer></script>
     </head>
     <body>
-        <h1>Library</h1>
-        <div id="cardContainer"></div>
-        <button id="newBookBtn" type="button">New Book</button>
+        <div class="top">
+            <h1>Library.</h1>
+            <button id="new-book-btn" type="button">New Book</button>
+        </div>
+        <div id="card-container"></div>
         <dialog>
             <form>
-                <label for="title">
+                <label for="form-book-title">
                     Title:
-                    <input type="text" id="title" name="title" required>
+                    <input type="text" id="form-book-title" name="title" required>
                 </label>
-                <label for="author">
+                <label for="form-book-author">
                     Author:
-                    <input type="text" id="author" name="author" required>
+                    <input type="text" id="form-book-author" name="author" required>
                 </label>
-                <label for="pages">
+                <label for="form-book-pages">
                     Number of Pages:
-                    <input type="number" id="pages" name="pages" required>
+                    <input type="number" id="form-book-pages" name="pages" required>
                 </label>
-                <label for="read">
-                    <input type="checkbox" id="read" name="read" value="read">
-                    Finished Reading
+                <label for="form-book-read">
+                    <input type="checkbox" id="form-book-read" name="read" value="read">
+                    Finished Reading?
                 </label>
                 <div>
-                    <button type="button" id="cancelBtn" value="cancel">Cancel</button>
-                    <button id="addBookBtn" value="default" formmethod="dialog">Add Book</button>
+                    <button type="button" id="cancel-btn" value="cancel">Cancel</button>
+                    <button id="add-book-btn" value="default" formmethod="dialog">Add Book</button>
                 </div>
             </form>
         </dialog>

@@ -103,12 +103,6 @@ function resetContainer() {
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 addBookToLibrary(theHobbit);
-const latheOfHeaven = new Book("The Lathe of Heaven", "Ursula K. Le Guin", 184, true);
-addBookToLibrary(latheOfHeaven);
-const placeholderBook = new Book("Placeholder", "Author", 123, true);
-addBookToLibrary(placeholderBook);
-const placeholderBook2 = new Book("Placeholder", "Author", 123, true);
-addBookToLibrary(placeholderBook2);
 
 const dialog = document.querySelector("dialog");
 const form = document.querySelector("form");

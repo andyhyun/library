@@ -17,7 +17,7 @@
             <form>
                 <label for="form-book-title">
                     Title:
-                    <input type="text" id="form-book-title" name="title" required>
+                    <input type="text" id="form-book-title" name="title" required autofocus>
                 </label>
                 <label for="form-book-author">
                     Author:
@@ -27,11 +27,11 @@
                     Number of Pages:
                     <input type="number" id="form-book-pages" name="pages" required>
                 </label>
-                <label for="form-book-read">
+                <label for="form-book-read" class="read-toggle-label">
                     <input type="checkbox" id="form-book-read" name="read" value="read">
                     Finished Reading?
                 </label>
-                <div>
+                <div id="form-buttons">
                     <button type="button" id="cancel-btn" value="cancel">Cancel</button>
                     <button id="add-book-btn" value="default" formmethod="dialog">Add Book</button>
                 </div>

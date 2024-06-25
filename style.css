@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wdth,wght@0,87.5,100..900;1,87.5,100..900&display=swap');
 
 :root {
     --bg-color: #fbf8e9;
@@ -19,9 +19,12 @@
 
 html {
     font-size: 100%;
-    font-family: "Nanum Gothic", sans-serif;
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    font-variation-settings:
+        "wdth" 87.5;
 }
 
 body {
@@ -33,13 +36,25 @@ body {
 }
 
 button {
+    color: black;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 700;
     padding: 0.4rem;
-    border: 1px solid black;
+    border: 0.1rem solid black;
     border-radius: 0rem;
-    /* border-radius: 0.5rem; */
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
 }
 
 .top {
@@ -66,19 +81,124 @@ button {
     background-color: var(--green-active);
 }
 
+dialog {
+    margin: auto;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border: 0.1rem solid black;
+}
+
+dialog > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+dialog label[for="form-book-title"],
+dialog label[for="form-book-author"],
+dialog label[for="form-book-pages"] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+dialog input[type="text"],
+dialog input[type="number"] {
+    font-size: 1rem;
+    padding: 0.25rem;
+    border: 0.1rem solid black;
+    border-radius: 0rem;
+}
+
+dialog #form-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+dialog #cancel-btn {
+    background-color: var(--red);
+}
+
+dialog #cancel-btn:hover {
+    background-color: var(--red-hover);
+}
+
+dialog #cancel-btn:active {
+    background-color: var(--red-active);
+}
+
+dialog #add-book-btn {
+    background-color: var(--green);
+}
+
+dialog #add-book-btn:hover {
+    background-color: var(--green-hover);
+}
+
+dialog #add-book-btn:active {
+    background-color: var(--green-active);
+}
+
+/*
+Custom checkbox styling based on:
+https://moderncss.dev/pure-css-custom-checkbox-style/
+*/
+.read-toggle-label {
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: grid;
+    justify-self: end;
+    align-items: center;
+    grid-template-columns: 1rem auto;
+    gap: 0.5rem;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+    margin: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 0.1rem solid black;
+    display: grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1rem 1rem black;
+
+    /* Checkmark */
+    transform-origin: bottom left;
+    clip-path: polygon(15% 38%, 43% 66%, 83% 12%, 100% 26%, 44% 100%, 0 56%);
+
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
 #card-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-    grid-auto-rows: 12rem;
+    grid-auto-rows: 16rem;
     gap: 1rem;
 }
 
 .card {
     padding: 1rem;
     background-color: var(--blue);
-    border: 1px solid black;
+    border: 0.1rem solid black;
     border-radius: 0rem;
-    /* border-radius: 1rem; */
     display: grid;
     gap: 0.2rem;
     grid-template-rows: auto auto auto 1fr auto;

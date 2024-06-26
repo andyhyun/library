@@ -18,6 +18,10 @@ Book.prototype.readString = function() {
     return (this.read) ? "Completed" : "Not Read Yet";
 };
 
+/*
+ * Add book object to myLibrary and add card element containing book info
+ * into the card container in the DOM
+ * */
 function addBookToLibrary(book) {
     const addIndex = myLibrary.length;
     myLibrary.push(book);
@@ -68,21 +72,19 @@ function addBookToLibrary(book) {
 
     const readToggleLabel = document.createElement("label");
     readToggleLabel.classList.add("read-toggle-label");
+
     const readToggle = document.createElement("input");
     readToggle.type = "checkbox";
     readToggle.checked = book.read;
+    readToggle.addEventListener("change", () => {
+        book.read = readToggle.checked;
+        cardBookRead.textContent = book.readString();
+    });
     readToggleLabel.appendChild(readToggle);
+
     const readToggleSpan = document.createElement("span");
     readToggleSpan.textContent = "Read";
     readToggleLabel.appendChild(readToggleSpan);
-    readToggle.addEventListener("change", () => {
-        if (readToggle.checked) {
-            book.read = true;
-        } else {
-            book.read = false;
-        }
-        cardBookRead.textContent = book.readString();
-    });
     card.appendChild(readToggleLabel);
 
     container.appendChild(card);

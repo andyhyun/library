@@ -42,7 +42,7 @@ button {
     font-weight: 700;
     padding: 0.4rem;
     border: 0.1rem solid black;
-    border-radius: 0rem;
+    border-radius: 0;
 }
 
 h1 {
@@ -108,7 +108,7 @@ dialog input[type="number"] {
     font-size: 1rem;
     padding: 0.25rem;
     border: 0.1rem solid black;
-    border-radius: 0rem;
+    border-radius: 0;
 }
 
 dialog #form-buttons {
@@ -163,6 +163,7 @@ input[type="checkbox"] {
     width: 1.2rem;
     height: 1.2rem;
     border: 0.1rem solid black;
+    border-radius: 0;
     display: grid;
     place-content: center;
 }
@@ -198,7 +199,7 @@ input[type="checkbox"]:checked::before {
     padding: 1rem;
     background-color: var(--blue);
     border: 0.1rem solid black;
-    border-radius: 0rem;
+    border-radius: 0;
     display: grid;
     gap: 0.2rem;
     grid-template-rows: auto auto auto 1fr auto;
